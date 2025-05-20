@@ -1,6 +1,19 @@
+/*
+Unaccepted version of the solution to the Factoring Large Integers problem
+Use the Whell factoring technique with a mod 30 wheel.
+
+Author: Juan Diego Collazos
+Date : 19/5/2025
+Problem : https://onlinejudge.org/external/114/11476.pdf
+
+Reference:
+Wheel factorization: https://cp-algorithms.com/algebra/factorization.html
+*/
+
 #include <bits/stdc++.h>
-typedef long long ll;
+
 using namespace std;
+using ll = long long;
 
 vector<ll> trial_division(ll n) {
 	vector<ll> factorization;

@@ -75,15 +75,13 @@ int dist(pair<int, int> a, pair<int, int> b){
 
 vector<vector<pair<int, int>>> makeLines(int n){
 	vector<vector<pair<int, int>>> ans((n + 1) << 1);
-	int k = 0;
 	for(int i = 0; i < n; ++i){
 		for(int j = 0; j < n; ++j){
-			ans[k].push_back({i, j});
-			ans[k + n].push_back({j, i});
+			ans[i].push_back({i, j});
+			ans[i + n].push_back({j, i});
 		}
-		++k;
 	}
-	k = n << 1;
+	int k = n << 1;
 	for(int i = 0; i < n; ++i){
 		ans[k].push_back({i, i});
 		ans[k + 1].push_back({n - i - 1, i});

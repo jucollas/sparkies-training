@@ -16,48 +16,28 @@ int k, w;
 vector<pair<int, int>> butt;
 unordered_map<state, int, StateHash> dp;
 
-int dist(pair<int, int>& a, pair<int, int>& b){
+int d(pair<int, int>& a, pair<int, int>& b){
 	return abs(a.first - b.first) + abs(a.second - b.second);
 }
 
-int maximum(int a, int b){
-	return (a > b) ? a : b;
-}
-
-int minimum(int a, int b){
-	return (a < b) ? a : b;
-}
-
-int phi(int r1, int r2, int acc){
+int phi(int u, int v, int r){
 	int ans;
-	state key = {maximum(r1, r2), minimum(r1, r2), acc};
-	if(dp.count(key)){
+	state key = {u, v, r};
+	if (dp.count(key)){
 		ans = dp[key];
 	}else{
-		if(r1 == k || r2 == k){
-			ans = maximum(dist(butt[minimum(r1, r2)], butt[k]) - acc, 0);
+		if (u == k){
+			ans = max(d(butt[v], butt[k]) - r, 0);
 		}else{
-			int rn = maximum(r1, r2) + 1;
-			int distf = dist(butt[r1], butt[rn]);
-			int dists = dist(butt[r2], butt[rn]);
-			int accf = 0, accs = 0;
-			if(r1 != r2){
-				if(rn == r1 + 1){
-					dists = maximum(dists - acc, 0);
-					accf = acc;
-				}else{
-					distf = maximum(distf - acc, 0);
-					accs = acc;
-				}
-			}
-			accf += distf;
-			accs += dists;
-			ans = phi(rn, r2, minimum(accf, w)) + distf;
-			ans = minimum(ans, phi(r1, rn, minimum(accs, w)) + dists);
+			int s = u + 1;
+			int du = d(butt[u], butt[s]);
+			int dv = max(d(butt[v], butt[s]) - r, 0);
+			int ru = min(du + r, w), rv = dv;
+			ans = min(phi(s, v, ru) + du, phi(s, u, rv) + dv);
 		}
 		dp[key] = ans;
 	}
-	return ans;
+ return ans;
 }
 
 int main(){
@@ -71,8 +51,10 @@ int main(){
 			butt.push_back({r, c});
 		}
 		butt.push_back({n, m});
+
 		k = butt.size() - 1;
 		dp = {};
+
 		int ans = phi(0, 0, 0) + 1;
 		cout << ans << endl;
 	}

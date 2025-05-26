@@ -7,6 +7,9 @@ Retorna un vector de vertices que tiene -1 si no ha sido considerado en el match
 Toma tiempo O(V*E).
 Probado en <11439 Maximizing the ICPC>.
 */
+#include<bits/stdc++.h>
+using namespace std;
+
 vector<int> Blossom(vector<list<int>>& graph) {
   int n = graph.size(), timer = -1;
   vector<int> mate(n, -1), label(n), parent(n), 

@@ -1,13 +1,13 @@
 /*
 Accepted version of the solution to the Factoring Large Integers problem
-Use Factorization con Pollard’s Rho + Primality de Miller-Rabin
+Use Factorization with Pollard’s Rho + Primality de Miller-Rabin
 
 Author: Juan Diego Collazos
 Date : 20/5/2025
 Problem : https://onlinejudge.org/external/114/11476.pdf
 
 Reference:
-Pollard's Rho Algorithm for Prime Factorization: https://www.geeksforgeeks.org/pollards-rho-algorithm-prime-factorization/?ref=rp
+Pollard's Rho Algorithm for Prime Factorization: https://www.geeksforgeeks.org/pollards-rho-algorithm-prime-factorization/
 Primality Test | Set 3 (Miller–Rabin) : https://www.geeksforgeeks.org/primality-test-set-3-miller-rabin/
 */
 
